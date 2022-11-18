@@ -23,7 +23,25 @@ public class enemy_health : MonoBehaviour
             if(!dead)
             {
             anim.SetTrigger("die");
-            GetComponent<slime_movement>().enabled = false;
+            
+            if(GetComponent<chameleon_movement>() != null)
+                GetComponent<chameleon_movement>().enabled=false;
+            if(GetComponent<chameleon_attack>() != null)
+                GetComponent<chameleon_attack>().enabled=false;
+            if(GetComponent<duck_movement>() != null)
+                GetComponent<duck_movement>().enabled=false;
+            if(GetComponent<slime_movement>() != null)
+                GetComponent<slime_movement>().enabled=false;
+            if(GetComponent<plant_attack>() != null)
+                GetComponent<plant_attack>().enabled=false;
+            if(GetComponent<enemy_damage>() != null)
+                GetComponent<enemy_damage>().enabled=false;
+            if(GetComponent<Rigidbody2D>() != null)
+                GetComponent<Rigidbody2D>().simulated=false;
+            if(GetComponent<BoxCollider2D>() != null)
+                GetComponent<BoxCollider2D>().enabled=false;
+            if(GetComponent<SpriteRenderer>().sortingLayerName == "foreground")
+                GetComponent<SpriteRenderer>().sortingLayerName = "background";
             dead = true;
             }
         }
