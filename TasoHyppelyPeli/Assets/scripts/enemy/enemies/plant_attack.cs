@@ -28,7 +28,7 @@ public class plant_attack : MonoBehaviour
         coolDownTimer = 0;
 
         bullet[getBullet()].transform.position = shootPoint.position;
-        bullet[getBullet()].GetComponent<plant_projectile>().SetDirection(Mathf.Sign(-transform.localScale.x));
+        bullet[getBullet()].GetComponent<plant_projectile>().shoot();
     }
     private int getBullet()
     {
