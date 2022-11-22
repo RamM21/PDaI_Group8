@@ -5,7 +5,11 @@ public class enemy_health : MonoBehaviour
     [Header ("Health")]
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set;}
+    [Header("sounds")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
     private Animator anim;
+    private AudioSource source;
     private bool dead;
     private void Awake() {
         currentHealth = startingHealth;
@@ -17,12 +21,14 @@ public class enemy_health : MonoBehaviour
         if(currentHealth > 0)
         {  
             anim.SetTrigger("hit");
+            source.PlayOneShot(hurtSound);
         }
         else
         {
             if(!dead)
             {
             anim.SetTrigger("die");
+            source.PlayOneShot(deathSound);
             
             if(GetComponent<chameleon_movement>() != null)
                 GetComponent<chameleon_movement>().enabled=false;

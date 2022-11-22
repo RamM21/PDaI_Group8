@@ -3,6 +3,10 @@ using System.Collections;
 public class duck_movement : MonoBehaviour
 {
     [SerializeField] private float damage;
+    [Header("sounds")]
+    [SerializeField] private AudioClip standSound;
+    [SerializeField] private AudioClip jumpSound;
+    private AudioSource source;
     [Header ("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -20,6 +24,7 @@ public class duck_movement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         changeRate = changeSideTime;
         facing = transform.localScale.x;
+        source = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -72,6 +77,7 @@ public class duck_movement : MonoBehaviour
         yield return new WaitForSeconds(crouchTime);
         crouch = false;
         anim.SetBool("crouch",false);
+        source.PlayOneShot(jumpSound);
         jump();
     }
 }

@@ -5,6 +5,9 @@ public class chameleon_movement : MonoBehaviour
 {
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
+    [Header("Sounds")]
+    [SerializeField] private AudioClip walkSound;
+    public AudioSource source {get;private set;}
     private bool moving;
     private bool routine;
 
@@ -17,6 +20,7 @@ public class chameleon_movement : MonoBehaviour
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
         moving = true;
         routine = false;
     }

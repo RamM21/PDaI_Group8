@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class enemy_vertical : MonoBehaviour
 {
+    [Header("Properties")]
     [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private float movementDistance;
+    [Header("Sounds")]
+    [SerializeField] private AudioClip activeSound;
+    [SerializeField] private AudioClip hitSound;
+    private AudioSource source;
     private bool movingUp;
     private float upEdge;
     private float downEdge;
@@ -13,8 +18,10 @@ public class enemy_vertical : MonoBehaviour
     private void Awake() {
         upEdge = transform.position.y + movementDistance;
         downEdge = transform.position.y - movementDistance;
+        source = GetComponent<AudioSource>();
     }
     private void Update() {
+        source.PlayOneShot(activeSound);
         if(movingUp)
         {
             if(transform.position.y < upEdge)
@@ -38,6 +45,7 @@ public class enemy_vertical : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player")
         {
+            source.PlayOneShot(hitSound);
             collision.GetComponent<health>().TakeDamage(damage);
         }
     }

@@ -4,7 +4,9 @@ public class slime_movement : MonoBehaviour
 {
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
-
+    [Header("Sounds")]
+    [SerializeField] private AudioClip walkSound;
+    private AudioSource source;
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
@@ -14,6 +16,7 @@ public class slime_movement : MonoBehaviour
     private void Awake() {
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
+        source = GetComponent<AudioSource>();
     }
     private void Update() {
         if(movingLeft)
