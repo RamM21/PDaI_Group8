@@ -9,6 +9,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float attackRangeY = 2.83f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private float attackDamage = 1f;
+    
+    [SerializeField] private AudioSource attackSound;
     private Rigidbody2D rb;
     private Vector2 attackRangeSize;
     private float attackRate = .25f;
@@ -37,6 +39,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack()
     {
+        
+        attackSound.Play();
         nextAttackTime = Time.time + attackRate;
         Debug.Log(nextAttackTime);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackRangeSize, 1);

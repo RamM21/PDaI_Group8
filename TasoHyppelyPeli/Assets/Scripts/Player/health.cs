@@ -17,11 +17,14 @@ public class health : MonoBehaviour
 	private SpriteRenderer spriteRend;
     private Rigidbody2D rb;
 
+    public HealthBar healthBar;
+
     private void Awake() {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        healthBar.SetMaxHealth(startingHealth);
     }
     public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0 , startingHealth);
@@ -42,10 +45,12 @@ public class health : MonoBehaviour
             gameObject.GetComponent<PlayerAnimation>().enabled = false;
             }
         }
+        healthBar.SetHealth(currentHealth);
     }
     public void addHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value,0,startingHealth);
+        healthBar.SetHealth(currentHealth);
     }
     private IEnumerator Invulnerability()
     {
