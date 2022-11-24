@@ -17,6 +17,9 @@ public class slime_movement : MonoBehaviour
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
         source = GetComponent<AudioSource>();
+        source.clip = walkSound;
+        source.loop = true;
+        source.Play();
     }
     private void Update() {
         if(movingLeft)

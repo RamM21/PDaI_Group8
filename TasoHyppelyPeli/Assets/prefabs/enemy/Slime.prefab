@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDistance: 5
   speed: 3
+  walkSound: {fileID: 8300000, guid: e4f273c93d0e6ef41800b7b5eae0451f, type: 3}
 --- !u!114 &3023353927513318665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 4
+  hurtSound: {fileID: 8300000, guid: b609876ba6b5b3b4ca7271338aa0c51c, type: 3}
+  deathSound: {fileID: 8300000, guid: d55296892cffb044e99edae1e22bd456, type: 3}
 --- !u!50 &3023353927513318663
 Rigidbody2D:
   serializedVersion: 4
@@ -237,7 +240,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.497
   m_Pitch: 1
   Loop: 0
   Mute: 0

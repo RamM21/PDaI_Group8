@@ -25,6 +25,9 @@ public class duck_movement : MonoBehaviour
         changeRate = changeSideTime;
         facing = transform.localScale.x;
         source = GetComponent<AudioSource>();
+        source.loop=true;
+        source.clip=standSound;
+        source.Play();
     }
 
     private void Update() {
@@ -46,10 +49,12 @@ public class duck_movement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         dead = GetComponent<enemy_health>().isDead();
         if(collision.collider.tag == "Player" && !dead)
+        {
             collision.collider.GetComponent<health>().TakeDamage(damage);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && body.velocity.y == 0)
         {
             crouch = true;
             anim.SetBool("crouch",true);

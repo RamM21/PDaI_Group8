@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 6
+  hurtSound: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
+  deathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
 --- !u!114 &1162248287331328970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   attackDelay: 1
+  attackSound: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}
 --- !u!114 &1162248287331328964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDistance: 3
   speed: 2
+  walkSound: {fileID: 8300000, guid: 3a06a27039e144e5c853a93d408fd63a, type: 3}
 --- !u!95 &1162248287331328963
 Animator:
   serializedVersion: 4

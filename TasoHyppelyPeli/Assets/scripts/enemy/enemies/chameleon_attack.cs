@@ -45,6 +45,7 @@ public class chameleon_attack : MonoBehaviour
         walk.enabled=false;
         yield return new WaitForSeconds(attackDelay);
         anim.SetTrigger("attacking");
+        source.PlayOneShot(attackSound);
         doAttack=true;
         aboutAttack=true;
         yield return new WaitForSeconds(1);
