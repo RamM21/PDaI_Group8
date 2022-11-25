@@ -13,6 +13,7 @@ public class health : MonoBehaviour
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
+    [SerializeField] private AudioSource damageSound;
 	
 	private SpriteRenderer spriteRend;
     private Rigidbody2D rb;
@@ -28,7 +29,7 @@ public class health : MonoBehaviour
     }
     public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0 , startingHealth);
-        Debug.Log(currentHealth);
+        damageSound.Play();
         if(currentHealth > 0)
         {  
             anim.SetTrigger("hurt");
