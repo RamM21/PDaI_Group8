@@ -19,9 +19,11 @@ public class enemy_horizontal : MonoBehaviour
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
         source = GetComponent<AudioSource>();
+        source.clip=activeSound;
+        source.loop=true;
+        source.Play();
     }
     private void Update() {
-        source.PlayOneShot(activeSound);
         if(movingLeft)
         {
             if(transform.position.x > leftEdge)

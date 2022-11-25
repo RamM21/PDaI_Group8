@@ -103,7 +103,7 @@ MonoBehaviour:
   damage: 2
   speed: 5
   movementDistance: 5
-  activeSound: {fileID: 0}
+  activeSound: {fileID: 8300000, guid: 00f2e9aaf73e2204cbea80ebb46eabb3, type: 3}
   hitSound: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
 --- !u!61 &4194007929767664117
 BoxCollider2D:
@@ -163,7 +163,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.534
   m_Pitch: 1
   Loop: 0
   Mute: 0
