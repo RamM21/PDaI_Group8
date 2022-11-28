@@ -1,15 +1,21 @@
 using UnityEngine;
+using System.Collections;
 
 public class enemy_health : MonoBehaviour
 {
     [Header ("Health")]
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set;}
+    [Header("sounds")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
     private Animator anim;
+    private AudioSource source;
     private bool dead;
     private void Awake() {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
     public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0 , startingHealth);
@@ -17,13 +23,16 @@ public class enemy_health : MonoBehaviour
         if(currentHealth > 0)
         {  
             anim.SetTrigger("hit");
+            source.PlayOneShot(hurtSound);
         }
         else
         {
             if(!dead)
             {
             anim.SetTrigger("die");
-            
+            source.loop=false;
+            source.PlayOneShot(deathSound);
+        
             if(GetComponent<chameleon_movement>() != null)
                 GetComponent<chameleon_movement>().enabled=false;
             if(GetComponent<chameleon_attack>() != null)
@@ -42,6 +51,8 @@ public class enemy_health : MonoBehaviour
                 GetComponent<BoxCollider2D>().enabled=false;
             if(GetComponent<SpriteRenderer>().sortingLayerName == "foreground")
                 GetComponent<SpriteRenderer>().sortingLayerName = "background";
+            StartCoroutine(delete());
+            
             dead = true;
             }
         }
@@ -49,5 +60,11 @@ public class enemy_health : MonoBehaviour
     public bool isDead()
     {
         return dead;
+    }
+    private IEnumerator delete()
+    {
+        yield return new WaitForSeconds((float)1.8);
+        if(GetComponent<AudioSource>() != null)
+            GetComponent<AudioSource>().enabled=false;
     }
 }

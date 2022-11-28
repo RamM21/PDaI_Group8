@@ -5,6 +5,9 @@ public class chameleon_movement : MonoBehaviour
 {
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
+    [Header("Sounds")]
+    [SerializeField] private AudioClip walkSound;
+    public AudioSource source {get;private set;}
     private bool moving;
     private bool routine;
 
@@ -17,8 +20,12 @@ public class chameleon_movement : MonoBehaviour
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
+        source.loop=true;
+        source.clip=walkSound;
         moving = true;
         routine = false;
+        StartCoroutine(sound());
     }
     private void Update() {
         anim.SetBool("moving",moving);
@@ -57,7 +64,17 @@ public class chameleon_movement : MonoBehaviour
         transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
         moving = false;
         yield return new WaitForSeconds(4);
+        StartCoroutine(sound());
         moving = true;
         routine = false;
+    }
+    private IEnumerator sound()
+    {
+        yield return new WaitForSeconds((float)0.2);
+        source.Play();
+        yield return new WaitForSeconds((float)0.3);
+        source.Stop();
+        if(routine == false)
+            StartCoroutine(sound());
     }
 }
