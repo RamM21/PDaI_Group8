@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class gameOver : MonoBehaviour
 {
-    private int reloadLevel;
+    [SerializeField] private Text scoreText;
+    private static int reloadLevel;
+    private static int scoreCount;
     private void Start() {
-        reloadLevel = SceneManager.GetActiveScene().buildIndex - 1;
+        scoreText.text = "Collected Melons: "+scoreCount;
     }
     public void restartLevel()
     {
@@ -14,5 +17,13 @@ public class gameOver : MonoBehaviour
     {
         print("startLoaded");
         //SceneManager.LoadScene("startScreen");
+    }
+    public static void setLevel(int level)
+    {
+        reloadLevel = level;
+    }
+    public static void setScore(int score)
+    {
+        scoreCount = score;
     }
 }

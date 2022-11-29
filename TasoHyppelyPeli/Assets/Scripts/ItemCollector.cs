@@ -21,4 +21,8 @@ public class ItemCollector : MonoBehaviour
             melonsText.text = "melons:" + melons;
         }
     }
+    public int getMelonCount()
+    {
+        return melons;
+    }
 }
