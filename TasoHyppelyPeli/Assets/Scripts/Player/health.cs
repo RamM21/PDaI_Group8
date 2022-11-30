@@ -13,19 +13,23 @@ public class health : MonoBehaviour
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
+    [SerializeField] private AudioSource damageSound;
 	
 	private SpriteRenderer spriteRend;
     private Rigidbody2D rb;
+
+    public HealthBar healthBar;
 
     private void Awake() {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        healthBar.SetMaxHealth(startingHealth);
     }
     public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0 , startingHealth);
-        Debug.Log(currentHealth);
+        damageSound.Play();
         if(currentHealth > 0)
         {  
             anim.SetTrigger("hurt");
@@ -42,10 +46,12 @@ public class health : MonoBehaviour
             gameObject.GetComponent<PlayerAnimation>().enabled = false;
             }
         }
+        healthBar.SetHealth(currentHealth);
     }
     public void addHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value,0,startingHealth);
+        healthBar.SetHealth(currentHealth);
     }
     private IEnumerator Invulnerability()
     {

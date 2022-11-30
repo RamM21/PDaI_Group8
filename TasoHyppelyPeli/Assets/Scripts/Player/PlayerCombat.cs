@@ -9,6 +9,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float attackRangeY = 2.83f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private float attackDamage = 1f;
+    
+    [SerializeField] private AudioSource attackSound;
     private Rigidbody2D rb;
     private Vector2 attackRangeSize;
     private float attackRate = .25f;
@@ -20,6 +22,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        var attackPointPos = attackPoint.transform.position;
+        attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, 0);
     }
 
     void Update()
@@ -37,13 +41,15 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack()
     {
+        
+        attackSound.Play();
         nextAttackTime = Time.time + attackRate;
-        Debug.Log(nextAttackTime);
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackRangeSize, 1);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackRangeSize, 2);
+        Debug.Log(hitEnemies);
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<enemy_health>().TakeDamage(attackDamage);
-            return;
+            Debug.Log("test2");
         }
     }
 
@@ -67,5 +73,11 @@ public class PlayerCombat : MonoBehaviour
         currentAttackRangeX = attackRangeX * scale.x;
         attackRangeSize = new Vector2(attackRangeX, attackRangeY);
         currentScale = scale;
+    }
+
+    public void doubleDamage(float multiplier)
+    {
+        attackDamage = attackDamage * multiplier;
+        Debug.Log(attackDamage);
     }
 }
