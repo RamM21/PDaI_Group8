@@ -9,7 +9,7 @@ public class trap_damage : MonoBehaviour
     private void Awake() {
         source=GetComponent<AudioSource>();
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
+    protected void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player")
         {
             source.PlayOneShot(clip);
