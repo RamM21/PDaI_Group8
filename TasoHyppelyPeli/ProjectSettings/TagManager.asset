@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - Ground
   - Melon
+  - Collectible item
+  - 2x
   layers:
   - Default
   - TransparentFX
