@@ -50,4 +50,8 @@ public class ItemCollector : MonoBehaviour
         player.transform.localScale /= 1.2f;
         Destroy(damage.gameObject);
     }
+    public int getMelonCount()
+    {
+        return melons;
+    }
 }

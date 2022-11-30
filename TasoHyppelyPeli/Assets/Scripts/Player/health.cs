@@ -21,6 +21,7 @@ public class health : MonoBehaviour
     public HealthBar healthBar;
 
     private void Awake() {
+        gameOver.setLevel(SceneManager.GetActiveScene().buildIndex);
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
@@ -44,6 +45,8 @@ public class health : MonoBehaviour
             gameObject.GetComponent<PlayerCombat>().enabled = false;
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<PlayerAnimation>().enabled = false;
+            gameOver.setScore(GetComponent<ItemCollector>().getMelonCount());
+            Invoke("gameOverScene",(float)1.5);
             }
         }
         healthBar.SetHealth(currentHealth);
@@ -64,6 +67,10 @@ public class health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration/(numberOfFlashes*2));
         }
         Physics2D.IgnoreLayerCollision(8 ,9 ,false);
+    }
+    private void gameOverScene()
+    {
+        SceneManager.LoadScene("gameOver");
     }
 
     private void RestartLevel()
