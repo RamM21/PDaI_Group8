@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class options : MonoBehaviour
 {
     [SerializeField] private Canvas background;
+    [SerializeField] private Slider volumeSlider;
 
     private void Awake() {
         background.enabled = false;
@@ -13,12 +14,18 @@ public class options : MonoBehaviour
      {
         background.enabled = true;
         Time.timeScale = 0;
-        AudioListener.pause = true;
      }
     public void closeOptions()
     {
         background.enabled = false;
         Time.timeScale = 1;
-        AudioListener.pause = false;
+    }
+    public void changeVolume()
+    {
+        AudioListener.volume=volumeSlider.value;
+    }
+    public void mute()
+    {
+        AudioListener.pause = !AudioListener.pause;
     }
 }
