@@ -17,14 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource stepSound;
     [SerializeField] private AudioSource landSound;
 
-    // Start is called before the first frame update
+    public static Vector2 lastCheckpointPos = new Vector2(-6, 1);
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
-    }
 
-    // Update is called once per frame
+        GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
+    }
     void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
