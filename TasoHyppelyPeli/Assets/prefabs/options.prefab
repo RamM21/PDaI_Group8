@@ -52,6 +52,7 @@ MonoBehaviour:
   combat: {fileID: 0}
   anim: {fileID: 0}
   button: {fileID: 4587151123853598101}
+  confirmButton: {fileID: 4587151124462960960}
 --- !u!1 &4587151123073711613
 GameObject:
   m_ObjectHideFlags: 0

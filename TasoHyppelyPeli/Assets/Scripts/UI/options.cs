@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class options : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class options : MonoBehaviour
     [SerializeField] private PlayerCombat combat;
     [SerializeField] private PlayerAnimation anim;
     [SerializeField] private volumeButton button;
+    [SerializeField] private Button confirmButton;
     private bool select;
 
     private void Awake() {
@@ -31,11 +32,11 @@ public class options : MonoBehaviour
         {
             selectOptions();
         }
-        else if(Input.GetButtonDown("Submit") && select==true)
+        if(Input.GetButtonDown("Jump") && EventSystem.current.currentSelectedGameObject == confirmButton.gameObject)
         {
             closeOptions();
         }
-        if(Input.GetButtonDown("Jump") && select==true)
+        if(Input.GetButtonDown("Jump") && EventSystem.current.currentSelectedGameObject == volumeSlider.gameObject)
         {
             mute();
         }
@@ -52,6 +53,7 @@ public class options : MonoBehaviour
      }
     public void closeOptions()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         select=false;
         movement.enabled=true;
         combat.enabled=true;
