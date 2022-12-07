@@ -11,6 +11,7 @@ TagManager:
   - 2x
   - checkpoint
   - Start
+  - FallDetector
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: ground
     uniqueID: 2644870947
+    locked: 0
+  - name: Trap
+    uniqueID: 800515461
     locked: 0

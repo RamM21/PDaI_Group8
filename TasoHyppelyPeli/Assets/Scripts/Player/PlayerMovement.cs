@@ -17,11 +17,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource stepSound;
     [SerializeField] private AudioSource landSound;
 
+    private Vector3 respawnPoint;
+    public GameObject fallDetector; 
+
     public static Vector2 lastCheckpointPos = new Vector2(-6, 1);
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
+        respawnPoint = transform.position;
 
         GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
     }
@@ -44,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         {
            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier -1) * Time.deltaTime; 
         }
+
+        fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -57,5 +63,13 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "FallDetector")
+        {
+            transform.position = respawnPoint;
+        }
     }
 }
