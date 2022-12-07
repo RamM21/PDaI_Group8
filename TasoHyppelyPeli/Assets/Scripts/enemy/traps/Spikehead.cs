@@ -7,7 +7,7 @@ public class Spikehead : trap_damage
     [SerializeField] private float range;
     [SerializeField] private float checkDelay;
     [SerializeField] private LayerMask playerLayer;
-    private Vector3[] directions = new Vector3[4];
+    private Vector3[] directions = new Vector3[2];
     private Vector3 destination;
     private float checkTimer;
     private bool attacking;
@@ -52,10 +52,10 @@ public class Spikehead : trap_damage
 
     private void CalculateDirections()
     {
-        directions[0] = transform.right * range; //right direction
-        directions[1] = -transform.right * range; //left direction
-        directions[2] = transform.up * range; //up direction
-        directions[3] = -transform.up * range; //down direction
+       // directions[0] = transform.right * range; //right direction
+       // directions[1] = -transform.right * range; //left direction
+        directions[0] = transform.up * range; //up direction
+        directions[1] = -transform.up * range; //down direction
     }
     private void Stop()
     {

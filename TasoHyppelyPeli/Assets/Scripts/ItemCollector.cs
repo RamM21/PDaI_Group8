@@ -27,7 +27,7 @@ public class ItemCollector : MonoBehaviour
             collectionSoundEffect.Play ();
             Destroy(collision.gameObject);
             melons++;
-            melonsText.text = "melons:" + melons;
+            melonsText.text = "Melons: " + melons;
         }
 
         if(collision.gameObject.CompareTag("2x"))
