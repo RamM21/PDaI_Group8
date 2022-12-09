@@ -9,6 +9,8 @@ TagManager:
   - Melon
   - Collectible item
   - 2x
+  - checkpoint
+  - Start
   - FallDetector
   layers:
   - Default

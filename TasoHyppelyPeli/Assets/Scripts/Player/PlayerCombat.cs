@@ -45,11 +45,10 @@ public class PlayerCombat : MonoBehaviour
         attackSound.Play();
         nextAttackTime = Time.time + attackRate;
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, attackRangeSize, 2);
-        Debug.Log(hitEnemies);
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log(enemy);
             enemy.GetComponent<enemy_health>().TakeDamage(attackDamage);
-            Debug.Log("test2");
         }
     }
 
@@ -78,6 +77,5 @@ public class PlayerCombat : MonoBehaviour
     public void doubleDamage(float multiplier)
     {
         attackDamage = attackDamage * multiplier;
-        Debug.Log(attackDamage);
     }
 }

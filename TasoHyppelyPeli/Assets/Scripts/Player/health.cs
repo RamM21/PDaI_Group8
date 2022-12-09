@@ -9,6 +9,7 @@ public class health : MonoBehaviour
     public float currentHealth { get; private set;}
     private Animator anim;
     private bool dead;
+    private Vector3 respawnPoint;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -28,6 +29,7 @@ public class health : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         healthBar.SetMaxHealth(startingHealth);
     }
+
     public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0 , startingHealth);
         damageSound.Play();
