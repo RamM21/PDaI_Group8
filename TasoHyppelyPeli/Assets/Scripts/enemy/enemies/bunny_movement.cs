@@ -6,60 +6,73 @@ public class bunny_movement : MonoBehaviour
 {
     private Animator anim;
 
-    private float leftDistance;
-    private float rightDistange;
-    private bool direction;
-
-    private Vector3 scale;
-    private float scaleX;
+    private float leftBoundary;
+    private float rightBoundary;
+    private Direction direction;
 
     [SerializeField] private float speed;
     [SerializeField] private float distance;
-    
+    [SerializeField] private float scale = 1.0f;
+
     private void Awake()
     {
-        leftDistance = transform.position.x - distance;
-        rightDistange = transform.position.x + distance;
+        SetBoundaries();
         anim = GetComponent<Animator>();
+        direction = Direction.Left;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        Scale();
-        movement();
+        UpdatePosition();
     }
 
-    private void movement()
+    private void UpdatePosition()
     {
-        if(direction)
+        if (direction == Direction.Left)
         {
-            transform.localScale = new Vector3(scaleX,scale.y,scale.z);
-            if(transform.position.x > leftDistance)
+            transform.localScale = new Vector3(scale, scale, scale);
+            if (transform.position.x > leftBoundary)
             {
-                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime,transform.position.y,transform.position.z);
+                MoveLeft();
             }
             else
-            direction = false;
+            {
+                direction = Direction.Right;
+            }
         }
         else
         {
-            transform.localScale = new Vector3(-scaleX,scale.y,scale.z);
-            if(transform.position.x < rightDistange)
+            transform.localScale = new Vector3(-scale, scale, scale);
+            if (transform.position.x < rightBoundary)
             {
-                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime,transform.position.y,transform.position.z);
+                MoveRight();
             }
             else
-            direction = true;
+            {
+                direction = Direction.Left;
+            }
         }
     }
 
-    private void Scale()
+    private void SetBoundaries()
     {
-        scale = transform.localScale;
-        if (scaleX != Mathf.Abs(scale.x))
-        {
-            scaleX = Mathf.Abs(scale.x);
-        }
+        leftBoundary = transform.position.x - distance;
+        rightBoundary = transform.position.x + distance;
+    }
+
+    private void MoveLeft()
+    {
+        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+    }
+
+    private void MoveRight()
+    {
+        transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+    }
+
+    private enum Direction
+    {
+        Left,
+        Right
     }
 }

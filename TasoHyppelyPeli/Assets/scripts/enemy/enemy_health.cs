@@ -33,6 +33,8 @@ public class enemy_health : MonoBehaviour
             source.loop=false;
             source.PlayOneShot(deathSound);
 
+            if(GetComponent<bunny_movement>() != null)
+                GetComponent<bunny_movement>().enabled=false;
             if(GetComponent<chameleon_movement>() != null)
                 GetComponent<chameleon_movement>().enabled=false;
             if(GetComponent<chameleon_attack>() != null)

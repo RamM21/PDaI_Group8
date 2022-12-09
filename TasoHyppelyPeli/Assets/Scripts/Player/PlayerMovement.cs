@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource stepSound;
     [SerializeField] private AudioSource landSound;
 
-    private Vector3 respawnPoint;
     public GameObject fallDetector; 
 
     public static Vector2 lastCheckpointPos = new Vector2(-6, 1);
@@ -25,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
-        respawnPoint = transform.position;
 
         GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
     }
@@ -69,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.tag == "FallDetector")
         {
-            transform.position = respawnPoint;
+            transform.position = lastCheckpointPos;
         }
     }
 }
