@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour
 
 {
     private AudioSource finishSound;
+    [SerializeField] private ParticleSystem parSys;
 
     private bool levelCompleted = false;
 
@@ -20,6 +21,9 @@ public class Finish : MonoBehaviour
         if (collision.gameObject.name == "Player" && !levelCompleted)
         {
             finishSound.Play();
+            var em = parSys.emission;
+            em.enabled=true;
+            parSys.Play();
             levelCompleted = true;
             Invoke("CompleteLevel", 2f);
         }
