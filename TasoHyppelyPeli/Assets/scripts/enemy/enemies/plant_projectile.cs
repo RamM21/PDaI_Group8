@@ -38,17 +38,10 @@ public class plant_projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         collision.GetComponent<health>().TakeDamage(damage);
-        print(collision.GetComponent<health>().currentHealth);
-        Deactivate();
-        }
-        if(collision.IsTouchingLayers(3))
-        {
-        hit = true;
-        boxCollider.enabled = false;
         Deactivate();
         }
     }
-    private void Deactivate()
+    public void Deactivate()
     {
         gameObject.SetActive(false);
     }

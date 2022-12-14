@@ -36,11 +36,20 @@ public class enemy_health : MonoBehaviour
             if(GetComponent<bunny_movement>() != null)
                 GetComponent<bunny_movement>().enabled=false;
             if(GetComponent<chameleon_movement>() != null)
+            {
+                GetComponent<chameleon_movement>().StopAllCoroutines();
                 GetComponent<chameleon_movement>().enabled=false;
+            }
             if(GetComponent<chameleon_attack>() != null)
+            {
+                GetComponent<chameleon_attack>().StopAllCoroutines();
                 GetComponent<chameleon_attack>().enabled=false;
+            }
             if(GetComponent<duck_movement>() != null)
+            {
+                GetComponent<duck_movement>().StopAllCoroutines();
                 GetComponent<duck_movement>().enabled=false;
+            }
             if(GetComponent<slime_movement>() != null)
                 GetComponent<slime_movement>().enabled=false;
             if(GetComponent<plant_attack>() != null)
@@ -68,5 +77,7 @@ public class enemy_health : MonoBehaviour
         yield return new WaitForSeconds((float)1.8);
         if(GetComponent<AudioSource>() != null)
             GetComponent<AudioSource>().enabled=false;
+        
+        gameObject.SetActive(false);
     }
 }

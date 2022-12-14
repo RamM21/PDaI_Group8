@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 364
     height: 770.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -991,6 +991,9 @@ MonoBehaviour:
     - {fileID: 2393415660711736914, guid: 011eacdee0a023a45b497828d851726d, type: 2}
     - {fileID: -7117454449696138127, guid: eddc6bdc6ad37e34f8e93a5eb8ca8ae2, type: 2}
     - {fileID: -3566196060327358717, guid: 8287429ce2a476f41bd7f052d15c44f6, type: 2}
+    - {fileID: -663174597638287205, guid: 6e63edc545784ff41abb2648c3b938ab, type: 2}
+    - {fileID: -4840888921740637618, guid: 6d434ae057297ac46877955daf63434e, type: 2}
+    - {fileID: -7853244439735414677, guid: c7672389bad70834fa057a20eeefa7f3, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.98556703
       e01: 0
@@ -1056,10 +1059,58 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: eddc6bdc6ad37e34f8e93a5eb8ca8ae2, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 6d434ae057297ac46877955daf63434e, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -7117454449696138127, guid: eddc6bdc6ad37e34f8e93a5eb8ca8ae2, type: 2}
+  - m_Target: {fileID: -4840888921740637618, guid: 6d434ae057297ac46877955daf63434e, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
