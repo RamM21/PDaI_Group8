@@ -48,7 +48,10 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log(enemy);
+            if(enemy.GetComponent<enemy_health>()!=null)
             enemy.GetComponent<enemy_health>().TakeDamage(attackDamage);
+            if(enemy.GetComponent<plant_projectile>()!=null)
+                enemy.GetComponent<plant_projectile>().Deactivate();
         }
     }
 
