@@ -51,11 +51,11 @@ public class PlayerAnimation : MonoBehaviour
             state = AnimationState.idle;
         }
 
-        if (rb.velocity.y > .1f)
+        if (rb.velocity.y > .1f && !GetComponent<PlayerMovement>().IsGrounded())
         {
             state = AnimationState.jumping;
         }
-        else if (rb.velocity.y < -.1f)
+        else if (rb.velocity.y < -.1f && !GetComponent<PlayerMovement>().IsGrounded())
         {
             state = AnimationState.falling;
         }
