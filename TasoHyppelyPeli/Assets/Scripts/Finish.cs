@@ -20,6 +20,7 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject.name == "Player" && !levelCompleted)
         {
+            collision.gameObject.GetComponent<PlayerMovement>().ResetCheckpointPos();
             finishSound.Play();
             var em = parSys.emission;
             em.enabled=true;
