@@ -10,10 +10,20 @@ public class StickyPlatform : MonoBehaviour
         {
             collision.gameObject.transform.SetParent(transform);        
         }
+
+        if (collision.gameObject.name == "plant (1)")
+        {
+            collision.gameObject.transform.SetParent(transform);        
+        }
     }
      private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
+        {
+            collision.gameObject.transform.SetParent(null);        
+        } 
+
+        if (collision.gameObject.name == "plant (1)")
         {
             collision.gameObject.transform.SetParent(null);        
         } 
