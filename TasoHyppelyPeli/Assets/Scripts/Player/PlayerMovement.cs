@@ -70,4 +70,9 @@ public class PlayerMovement : MonoBehaviour
             transform.position = lastCheckpointPos;
         }
     }
+
+    public void ResetCheckpointPos()
+    {
+        lastCheckpointPos = new Vector2(-6, 1);
+    }
 }
